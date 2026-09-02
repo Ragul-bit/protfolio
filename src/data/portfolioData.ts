@@ -10,10 +10,12 @@ export const personalInfo = {
   location: 'Coimbatore, India',
   status: 'Open to internships & freelance',
   email: 'ragul2005badge@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/ragul-gandhi-21b4a308',
-  linkedinHandle: 'ragul-gandhi-21b4a308',
+  linkedin: 'https://www.linkedin.com/in/ragul-gandhi-21b44a308/',
+  linkedinHandle: 'ragul-gandhi-21b44a308',
   github: 'https://github.com/Ragul-bit',
   githubHandle: 'Ragul-bit',
+  instagram: 'https://www.instagram.com/__rxgul__01/',
+  instagramHandle: '@__rxgul__01',
 };
 
 export const interestsData: InterestItem[] = [

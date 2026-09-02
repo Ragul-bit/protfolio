@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Linkedin, Github, Send, Copy, Check, Sparkles, CheckCircle2, AlertCircle, RotateCcw } from 'lucide-react';
+import { Mail, Linkedin, Github, Instagram, Send, Copy, Check, Sparkles, CheckCircle2, AlertCircle, RotateCcw } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useForm, ValidationError } from '@formspree/react';
 import { personalInfo } from '../data/portfolioData';
@@ -98,6 +98,24 @@ export const Contact: React.FC = () => {
                     <span className="text-[11px] text-slate-400 font-medium block">Follow on GitHub</span>
                     <b className="text-xs sm:text-sm font-semibold text-slate-900 group-hover:text-[#0071e3] transition-colors">
                       {personalInfo.githubHandle}
+                    </b>
+                  </div>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href={personalInfo.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-3 text-slate-700 hover:text-pink-600 hover:border-pink-200 transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 grid place-items-center flex-shrink-0">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] text-slate-400 font-medium block">Follow on Instagram</span>
+                    <b className="text-xs sm:text-sm font-semibold text-slate-900 group-hover:text-pink-600 transition-colors">
+                      {personalInfo.instagramHandle}
                     </b>
                   </div>
                 </a>
