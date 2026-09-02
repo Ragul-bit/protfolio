@@ -5,19 +5,17 @@ import { personalInfo } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection: string;
-  currentIndex?: number;
-  total?: number;
   onNavigate?: (id: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeSection,
-  currentIndex = 0,
-  total = 7,
   onNavigate,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 280, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -175,11 +173,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       )}
 
-      {/* Interactive Horizontal Scroll Progress Indicator */}
+      {/* Cinematic Scroll Progress Bar */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-blue-500 via-[#0071e3] to-sky-400 origin-left"
-        animate={{ scaleX: total > 1 ? (currentIndex / (total - 1)) : 0 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-blue-600 via-[#0071e3] to-cyan-400 origin-left"
+        style={{ scaleX }}
       />
     </header>
   );

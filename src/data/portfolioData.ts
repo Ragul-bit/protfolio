@@ -144,12 +144,17 @@ export const projectsData: Project[] = [
     githubUrl: 'https://github.com/Ragul-bit',
   },
   {
-    id: 'keyboard-monitor',
+    id: 'keylogger-monitor',
     isFeatured: false,
-    category: 'Security research',
-    title: 'Keyboard Input Monitor',
-    description: 'A research tool for exploring low-level input-hooking and secure system behaviour from a defensive perspective, analyzing system telemetry and keystroke handler lifecycles.',
-    chips: ['C++', 'Security', 'OS Internals', 'Telemetry Analysis'],
+    category: 'Cybersecurity & OS Internals',
+    title: 'C++ Keylogger & Keystroke Monitor',
+    description: 'A low-level cybersecurity research project built in C++ exploring operating system input-hooking mechanisms (SetWindowsHookEx & event handlers), keystroke telemetry logging, buffer management, and defensive detection heuristics for endpoint security.',
+    points: [
+      'Low-level OS hook integration and asynchronous event capture',
+      'Keystroke buffer serialization and timestamped logging',
+      'Defensive analysis of input-hook evasion and AV detection vectors'
+    ],
+    chips: ['C++', 'Keylogger Hooking', 'WinAPI / Linux', 'Cybersecurity', 'Telemetry Analysis', 'Endpoint Defense'],
     imageUrl: '/keyboard_monitor.jpg',
     githubUrl: 'https://github.com/Ragul-bit'
   }

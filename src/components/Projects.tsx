@@ -16,6 +16,7 @@ import {
 import { motion } from 'motion/react';
 import { projectsData } from '../data/portfolioData';
 import keyboardMonitorImg from '../assets/keyboard_monitor.jpg';
+import { CinematicReveal } from './CinematicReveal';
 
 export const Projects: React.FC = () => {
   const featured = projectsData.find((p) => p.isFeatured) || projectsData[0];
@@ -66,29 +67,25 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-10 md:py-14 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4"
-        >
-          <div className="max-w-2xl">
-            <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#0071e3] mb-3.5">
-              03 / Selected work
+    <section id="projects" className="py-24 md:py-32 border-t border-slate-200/60 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full relative z-10">
+        <CinematicReveal showGlow glowColor="cyan">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50/80 border border-cyan-100 text-cyan-700 text-[11px] font-bold tracking-[0.14em] uppercase mb-4 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+                03 / Selected work
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.05]">
+                Projects with <br />
+                <span className="text-slate-400 font-normal italic">purpose.</span>
+              </h2>
+            </div>
+            <p className="text-sm text-slate-500 max-w-xs md:text-right">
+              Small experiments, meaningful questions, and a lot of learning along the way.
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.05]">
-              Projects with <br />
-              <span className="text-slate-400 font-normal italic">purpose.</span>
-            </h2>
           </div>
-          <p className="text-sm text-slate-500 max-w-xs md:text-right">
-            Small experiments, meaningful questions, and a lot of learning along the way.
-          </p>
-        </motion.div>
 
         {/* Featured Project - Sliding Window Card */}
         <motion.div
@@ -312,7 +309,10 @@ export const Projects: React.FC = () => {
         {/* Secondary Projects Grid */}
         <div className="grid grid-cols-1 gap-5">
           {secondaryProjects.map((project, index) => {
-            const projectImg = project.id === 'keyboard-monitor' ? keyboardMonitorImg : project.imageUrl;
+            const projectImg =
+              project.id === 'keylogger-monitor' || project.id === 'keyboard-monitor'
+                ? keyboardMonitorImg
+                : project.imageUrl;
             return (
               <motion.div
                 key={project.id}
@@ -327,7 +327,7 @@ export const Projects: React.FC = () => {
                   {/* Left: Project Details */}
                   <div className="lg:col-span-6 space-y-4">
                     <div className="flex items-center gap-3.5">
-                      <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#0071e3] grid place-items-center flex-shrink-0 group-hover:bg-blue-100/80 transition-colors">
+                      <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#0071e3] grid place-items-center shrink-0 group-hover:bg-blue-100/80 transition-colors">
                         <Fingerprint className="w-5 h-5" />
                       </div>
                       <div>
@@ -343,6 +343,17 @@ export const Projects: React.FC = () => {
                     <p className="text-sm text-slate-600 leading-relaxed">
                       {project.description}
                     </p>
+
+                    {project.points && project.points.length > 0 && (
+                      <div className="space-y-1.5 pt-1">
+                        {project.points.map((pt, pIdx) => (
+                          <div key={pIdx} className="flex items-start gap-2 text-xs text-slate-600 font-medium">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mt-1.5 shrink-0" />
+                            <span>{pt}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Chips & Link */}
                     <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
@@ -379,11 +390,11 @@ export const Projects: React.FC = () => {
                           src={projectImg}
                           alt={project.title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-52 sm:h-60 object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                          className="w-full h-52 sm:h-64 object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                         />
                         <div className="absolute top-3 left-3 py-1 px-2.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-[10px] font-mono text-cyan-300 flex items-center gap-1.5">
                           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                          Input Hooking & Telemetry
+                          Keylogger Hooks & OS Telemetry
                         </div>
                       </div>
                     </div>
@@ -393,6 +404,7 @@ export const Projects: React.FC = () => {
             );
           })}
         </div>
+        </CinematicReveal>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Linkedin, Github, Send, Copy, Check, Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { personalInfo } from '../data/portfolioData';
+import { CinematicReveal } from './CinematicReveal';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -62,30 +63,26 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-10 md:py-14 overflow-hidden flex flex-col justify-center min-h-[calc(100vh-170px)]">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Contact Intro & Details */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 space-y-6"
-          >
-            <div>
-              <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#0071e3] mb-3.5">
-                06 / Contact
-              </p>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[0.98]">
-                Let’s make <br />
-                <span className="text-slate-400 font-normal italic">something useful.</span>
-              </h2>
-            </div>
+    <section id="contact" className="py-24 md:py-32 border-t border-slate-200/60 relative overflow-hidden bg-gradient-to-b from-[#f7f8fa] via-[#eef5fc]/60 to-[#e8f1fb]/80">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full relative z-10">
+        <CinematicReveal showGlow glowColor="blue">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Column: Contact Intro & Details */}
+            <div className="lg:col-span-5 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/80 border border-blue-100 text-[#0071e3] text-[11px] font-bold tracking-[0.14em] uppercase mb-4 shadow-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-pulse"></span>
+                  06 / Contact
+                </div>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[0.98]">
+                  Let’s make <br />
+                  <span className="text-slate-400 font-normal italic">something useful.</span>
+                </h2>
+              </div>
 
-            <p className="text-[15px] text-slate-600 leading-relaxed">
-              Open to internships, freelance collaborations, and conversations about thoughtful technology. If you have an idea or question, I’d love to hear it.
-            </p>
+              <p className="text-[15px] text-slate-600 leading-relaxed">
+                Open to internships, freelance collaborations, and conversations about thoughtful technology. If you have an idea or question, I’d love to hear it.
+              </p>
 
             {/* Direct Channels */}
             <div className="space-y-3 pt-2">
@@ -152,7 +149,7 @@ export const Contact: React.FC = () => {
                 </div>
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Contact Form */}
           <motion.div
@@ -258,6 +255,7 @@ export const Contact: React.FC = () => {
             </form>
           </motion.div>
         </div>
+        </CinematicReveal>
       </div>
     </section>
   );
