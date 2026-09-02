@@ -1,12 +1,19 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { timelineData } from '../data/portfolioData';
 
 export const Journey: React.FC = () => {
   return (
-    <section id="education" className="py-24 border-t border-slate-200/60">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+    <section id="education" className="py-10 md:py-14 overflow-hidden flex flex-col justify-center min-h-[calc(100vh-170px)]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full">
         {/* Header */}
-        <div className="max-w-2xl mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-14"
+        >
           <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#0071e3] mb-3.5">
             04 / Learning journey
           </p>
@@ -14,12 +21,19 @@ export const Journey: React.FC = () => {
             In progress, by <br />
             <span className="text-slate-400 font-normal italic">design.</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative pl-6 sm:pl-8 border-l border-slate-300 space-y-12 max-w-3xl">
-          {timelineData.map((item) => (
-            <div key={item.id} className="relative group">
+          {timelineData.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              className="relative group"
+            >
               {/* Timeline Marker Bullet */}
               <div
                 className={`absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full border-2 transition-all ${
@@ -64,7 +78,7 @@ export const Journey: React.FC = () => {
               <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed max-w-xl">
                 {item.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

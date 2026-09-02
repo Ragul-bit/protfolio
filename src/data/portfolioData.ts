@@ -150,15 +150,7 @@ export const projectsData: Project[] = [
     title: 'Keyboard Input Monitor',
     description: 'A research tool for exploring low-level input-hooking and secure system behaviour from a defensive perspective, analyzing system telemetry and keystroke handler lifecycles.',
     chips: ['C++', 'Security', 'OS Internals', 'Telemetry Analysis'],
-    githubUrl: 'https://github.com/Ragul-bit'
-  },
-  {
-    id: 'vuln-scanner',
-    isFeatured: false,
-    category: 'Cybersecurity & Tooling',
-    title: 'Automated Port & Vulnerability Auditor',
-    description: 'A lightweight socket auditor and banner grabber written to map exposed network services and verify header security policies against known CVE baselines.',
-    chips: ['Python', 'Network Security', 'Socket API', 'Linux'],
+    imageUrl: '/keyboard_monitor.jpg',
     githubUrl: 'https://github.com/Ragul-bit'
   }
 ];
@@ -216,5 +208,20 @@ export const certificationsData: Certification[] = [
     verificationLink: '/certificates/claude_certificate_-101_(1).pdf',
     skillsLearned: ['Prompt Engineering', 'LLM Architecture', 'Context Windows', 'AI Safety & Workflows'],
     pdfAvailable: true
+  },
+  {
+    id: 'cisco-python-essentials',
+    title: 'Python Essentials',
+    issuer: 'Cisco Networking Academy',
+    date: 'Certificate of Course Completion',
+    credentialId: 'Cisco NetAcad Verified Credential',
+    verificationLink: 'https://www.netacad.com/',
+    skillsLearned: [
+      'Python Syntax & Data Structures',
+      'Algorithms & Logic Building',
+      'Object-Oriented Programming (OOP)',
+      'Exception Handling & Modular Code'
+    ],
+    pdfAvailable: false
   }
 ];

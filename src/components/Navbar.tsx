@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { motion, useScroll, useSpring } from 'motion/react';
 import { personalInfo } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection: string;
+  currentIndex?: number;
+  total?: number;
+  onNavigate?: (id: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  activeSection,
+  currentIndex = 0,
+  total = 7,
+  onNavigate,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -28,11 +37,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { name: 'Certificates', href: '#certifications', id: 'certifications' },
   ];
 
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = (id: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (onNavigate) {
+      onNavigate(id);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -51,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           href="#home"
           onClick={(e) => {
             e.preventDefault();
-            handleLinkClick('#home');
+            handleLinkClick('home');
           }}
           className="flex items-center gap-2.5 font-bold tracking-tight text-slate-900 group"
           id="brand-logo"
@@ -74,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 href={link.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(link.href);
+                  handleLinkClick(link.id);
                 }}
                 className={`relative text-[13px] font-medium transition-colors duration-200 py-1 ${
                   isActive
@@ -84,7 +97,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               >
                 {link.name}
                 {isActive && (
-                  <span className="absolute left-0 right-0 -bottom-1 h-[2px] bg-[#0071e3] rounded-full" />
+                  <motion.span
+                    layoutId="active-nav-indicator"
+                    className="absolute left-0 right-0 -bottom-1 h-[2px] bg-[#0071e3] rounded-full"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
                 )}
               </a>
             );
@@ -97,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick('#contact');
+              handleLinkClick('contact');
             }}
             id="nav-contact-cta"
             className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-[13px] font-semibold text-slate-700 bg-white/80 hover:text-[#0071e3] border border-slate-300/80 hover:border-[#0071e3]/60 rounded-xl transition-all shadow-xs hover:shadow-sm"
@@ -131,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href={link.href}
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick(link.href);
+                handleLinkClick(link.id);
               }}
               className={`block py-2 text-sm font-medium transition-colors ${
                 activeSection === link.id
@@ -147,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick('#contact');
+                handleLinkClick('contact');
               }}
               className="flex items-center justify-between w-full py-2 text-sm font-semibold text-[#0071e3]"
             >
@@ -157,6 +174,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </div>
         </div>
       )}
+
+      {/* Interactive Horizontal Scroll Progress Indicator */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-blue-500 via-[#0071e3] to-sky-400 origin-left"
+        animate={{ scaleX: total > 1 ? (currentIndex / (total - 1)) : 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      />
     </header>
   );
 };

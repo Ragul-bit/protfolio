@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Linkedin, Github, Send, Copy, Check, Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
+import { motion } from 'motion/react';
 import { personalInfo } from '../data/portfolioData';
 
 export const Contact: React.FC = () => {
@@ -61,11 +62,17 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="mt-20 py-24 bg-gradient-to-b from-[#eef5fc] to-[#f4f8fd] border-t border-blue-100">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+    <section id="contact" className="py-10 md:py-14 overflow-hidden flex flex-col justify-center min-h-[calc(100vh-170px)]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Contact Intro & Details */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div>
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#0071e3] mb-3.5">
                 06 / Contact
@@ -102,7 +109,7 @@ export const Contact: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="p-2 text-slate-400 hover:text-[#0071e3] bg-slate-50 hover:bg-blue-50 rounded-lg transition-colors"
+                  className="p-2 text-slate-400 hover:text-[#0071e3] bg-slate-50 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
                   title="Copy email"
                 >
                   {copiedEmail ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
@@ -145,10 +152,16 @@ export const Contact: React.FC = () => {
                 </div>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Form */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-7"
+          >
             <form
               onSubmit={handleSubmit}
               className="p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/5 space-y-4"
@@ -243,7 +256,7 @@ export const Contact: React.FC = () => {
                 )}
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

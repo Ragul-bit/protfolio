@@ -35,6 +35,7 @@ export interface Project {
   }[];
   githubUrl?: string;
   liveDemoUrl?: string;
+  imageUrl?: string;
 }
 
 export interface TimelineItem {
