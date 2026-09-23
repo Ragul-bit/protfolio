@@ -8,49 +8,49 @@ export const About: React.FC = () => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'ShieldCheck':
-        return <ShieldCheck className="w-5 h-5 text-[#0071e3]" />;
+        return <ShieldCheck className="w-5 h-5 text-red-500" />;
       case 'Sparkles':
-        return <Sparkles className="w-5 h-5 text-[#0071e3]" />;
+        return <Sparkles className="w-5 h-5 text-red-400" />;
       case 'Network':
-        return <Network className="w-5 h-5 text-[#0071e3]" />;
+        return <Network className="w-5 h-5 text-red-500" />;
       case 'Globe':
       default:
-        return <Globe className="w-5 h-5 text-[#0071e3]" />;
+        return <Globe className="w-5 h-5 text-red-400" />;
     }
   };
 
   return (
-    <section id="about" className="py-24 md:py-32 border-t border-slate-200/60 relative overflow-hidden">
+    <section id="about" className="py-24 md:py-32 border-t border-red-950/40 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full relative z-10">
-        <CinematicReveal showGlow glowColor="blue">
+        <CinematicReveal showGlow glowColor="red">
           {/* Section Header */}
           <div className="max-w-2xl mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/80 border border-blue-100 text-[#0071e3] text-[11px] font-bold tracking-[0.14em] uppercase mb-4 shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-pulse"></span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/50 border border-red-500/40 text-red-400 text-[11px] font-bold tracking-[0.14em] uppercase mb-4 shadow-[0_0_12px_rgba(239,68,68,0.2)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
               01 / About me
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.05]">
-              Building with a <span className="text-slate-400 font-normal italic">wide-angle</span> view.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.05]">
+              Building with a <span className="text-red-500 font-normal italic">wide-angle</span> view.
             </h2>
           </div>
 
           {/* Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Narrative */}
-            <div className="lg:col-span-5 space-y-5 text-slate-600">
-              <p className="text-xl sm:text-2xl font-medium text-slate-900 leading-snug tracking-tight">
+            <div className="lg:col-span-5 space-y-5 text-zinc-300">
+              <p className="text-xl sm:text-2xl font-medium text-white leading-snug tracking-tight">
                 I like understanding the whole picture — from the first pixel on screen to the systems that make it work.
               </p>
-              <p className="text-[15px] leading-relaxed">
+              <p className="text-[15px] leading-relaxed text-zinc-400">
                 My interests move between frontend design, backend logic, cybersecurity, and networking. I’m a hands-on learner who enjoys turning an idea into something people can actually use, then asking how it can be made clearer, faster, and safer.
               </p>
               <div className="pt-2">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-[#0071e3] transition-colors group"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-red-400 hover:text-red-300 transition-colors group"
                 >
                   <span>Let’s connect</span>
-                  <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#0071e3] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-red-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>
@@ -64,16 +64,15 @@ export const About: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.6, delay: 0.1 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -5, scale: 1.01 }}
-                  className="p-6 rounded-2xl bg-white/85 hover:bg-white border border-slate-200/90 hover:border-blue-300 shadow-xs hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 group backdrop-blur-xs"
+                  className="p-6 rounded-2xl bg-[#0e0e14]/90 hover:bg-[#13131c] border border-zinc-800/90 hover:border-red-500/60 shadow-lg shadow-black/50 hover:shadow-[0_0_25px_rgba(239,68,68,0.15)] hover:-translate-y-1 transition-all duration-200 group backdrop-blur-xs"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-blue-50/90 group-hover:bg-blue-100/80 border border-blue-100 grid place-items-center mb-4 transition-transform group-hover:scale-110 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-red-950/70 group-hover:bg-red-900/60 border border-red-800/50 grid place-items-center mb-4 transition-transform group-hover:scale-110 shadow-sm">
                     {getIcon(item.iconName)}
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 tracking-tight mb-2 group-hover:text-[#0071e3] transition-colors">
+                  <h3 className="text-base font-bold text-white tracking-tight mb-2 group-hover:text-red-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-[13px] text-slate-500 leading-relaxed m-0">
+                  <p className="text-[13px] text-zinc-400 leading-relaxed m-0">
                     {item.description}
                   </p>
                 </motion.div>

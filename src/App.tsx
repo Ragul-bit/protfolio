@@ -8,7 +8,6 @@ import { Journey } from './components/Journey';
 import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ConstellationCursor } from './components/ConstellationCursor';
 
 const SECTIONS = ['home', 'about', 'skills', 'projects', 'education', 'certifications', 'contact'];
 
@@ -46,10 +45,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f7f8fa] text-[#0f172a] bg-tech-grid relative selection:bg-blue-100 selection:text-blue-900">
-      {/* Interactive Constellation Cursor & Particle Mesh */}
-      <ConstellationCursor />
-
+    <div className="min-h-screen bg-[#09090b] text-[#f4f4f5] bg-tech-grid ambient-red-glow relative selection:bg-red-600/40 selection:text-red-100">
       {/* Top Header Navigation with Scroll Progress indicator */}
       <Navbar
         activeSection={activeSection}

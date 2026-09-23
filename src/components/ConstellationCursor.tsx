@@ -270,7 +270,7 @@ export const ConstellationCursor: React.FC = () => {
             const mDist = Math.sqrt(mDistSq);
             const lineAlpha = (1 - mDist / connectionDist) * (mouse.hovering ? 0.65 : 0.42);
 
-            ctx.strokeStyle = `rgba(0, 113, 227, ${lineAlpha})`;
+            ctx.strokeStyle = `rgba(239, 68, 68, ${lineAlpha})`;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -288,9 +288,9 @@ export const ConstellationCursor: React.FC = () => {
 
           if (distSq < nodeDist * nodeDist) {
             const dist = Math.sqrt(distSq);
-            const lineAlpha = (1 - dist / nodeDist) * 0.22 * Math.min(p1.alpha, p2.alpha);
+            const lineAlpha = (1 - dist / nodeDist) * 0.25 * Math.min(p1.alpha, p2.alpha);
 
-            ctx.strokeStyle = `rgba(59, 130, 246, ${lineAlpha})`;
+            ctx.strokeStyle = `rgba(220, 38, 38, ${lineAlpha})`;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -299,7 +299,7 @@ export const ConstellationCursor: React.FC = () => {
         }
 
         // Draw the Particle Star Node
-        ctx.fillStyle = `rgba(0, 113, 227, ${p1.alpha})`;
+        ctx.fillStyle = `rgba(239, 68, 68, ${p1.alpha})`;
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -318,8 +318,8 @@ export const ConstellationCursor: React.FC = () => {
         // Outer pulsing orbital ring
         const ringRadius = mouse.hovering ? 20 * pulseScale : 12;
         ctx.strokeStyle = mouse.hovering
-          ? 'rgba(0, 113, 227, 0.65)'
-          : 'rgba(0, 113, 227, 0.35)';
+          ? 'rgba(239, 68, 68, 0.8)'
+          : 'rgba(239, 68, 68, 0.45)';
         ctx.lineWidth = mouse.hovering ? 1.5 : 1.0;
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, ringRadius, 0, Math.PI * 2);
@@ -328,7 +328,7 @@ export const ConstellationCursor: React.FC = () => {
         // 4 Cardinal Constellation Crosshairs
         const crossLength = mouse.hovering ? 6 : 4;
         const offset = ringRadius + 2;
-        ctx.strokeStyle = 'rgba(0, 113, 227, 0.55)';
+        ctx.strokeStyle = 'rgba(239, 68, 68, 0.65)';
         ctx.lineWidth = 1;
 
         // Top, Bottom, Left, Right cross notches
@@ -344,7 +344,7 @@ export const ConstellationCursor: React.FC = () => {
         ctx.stroke();
 
         // Inner Nexus Star
-        ctx.fillStyle = '#0071e3';
+        ctx.fillStyle = '#ef4444';
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, mouse.hovering ? 3.5 : 2.5, 0, Math.PI * 2);
         ctx.fill();

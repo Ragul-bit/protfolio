@@ -6,7 +6,7 @@ interface CinematicRevealProps {
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   className?: string;
-  glowColor?: 'blue' | 'purple' | 'cyan' | 'amber' | 'emerald';
+  glowColor?: 'red' | 'blue' | 'purple' | 'cyan' | 'amber' | 'emerald';
   showGlow?: boolean;
 }
 
@@ -15,7 +15,7 @@ export const CinematicReveal: React.FC<CinematicRevealProps> = ({
   delay = 0,
   direction = 'up',
   className = '',
-  glowColor = 'blue',
+  glowColor = 'red',
   showGlow = false,
 }) => {
   const getInitial = () => {
@@ -36,17 +36,19 @@ export const CinematicReveal: React.FC<CinematicRevealProps> = ({
 
   const getGlowClass = () => {
     switch (glowColor) {
+      case 'red':
+        return 'from-red-600/20 via-red-950/10 to-transparent';
       case 'purple':
-        return 'from-purple-500/10 via-indigo-500/5 to-transparent';
+        return 'from-purple-500/15 via-red-950/10 to-transparent';
       case 'cyan':
-        return 'from-cyan-500/10 via-blue-500/5 to-transparent';
+        return 'from-cyan-500/15 via-red-950/10 to-transparent';
       case 'amber':
-        return 'from-amber-500/10 via-orange-500/5 to-transparent';
+        return 'from-amber-500/15 via-red-950/10 to-transparent';
       case 'emerald':
-        return 'from-emerald-500/10 via-teal-500/5 to-transparent';
+        return 'from-emerald-500/15 via-red-950/10 to-transparent';
       case 'blue':
       default:
-        return 'from-blue-500/10 via-sky-500/5 to-transparent';
+        return 'from-red-600/15 via-red-900/10 to-transparent';
     }
   };
 
