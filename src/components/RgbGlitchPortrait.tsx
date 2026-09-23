@@ -12,7 +12,7 @@ import {
   Copy,
   Check,
 } from 'lucide-react';
-import ragulImg from '../assets/ragul.jpg';
+import ragulImg from '../assets/IMG-20251030-WA0010.jpg';
 import { personalInfo } from '../data/portfolioData';
 
 interface RgbGlitchPortraitProps {
